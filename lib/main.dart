@@ -1,5 +1,6 @@
 import 'package:epub/epub.dart';
 import 'package:epub_reader/services/epub.dart';
+import 'package:epub_reader/widgets/chapter_list.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -53,13 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text("Open Book Chapters"),
             ),
             Expanded(
-              child: ListView.builder(
-                itemBuilder: (ctx, index) {
-                  var chapter = _chapters[index];
-                  return Text(chapter.Title);
-                },
-                itemCount: _chapters.length,
-              ),
+              child: ChapterList(chapters: _chapters),
             ),
           ],
         ),

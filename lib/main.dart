@@ -1,64 +1,15 @@
-import 'package:epub/epub.dart';
-import 'package:epub_reader/services/epub.dart';
-import 'package:epub_reader/widgets/chapter_list.dart';
+import 'package:epub_reader/screens/home.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, @required this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  List<EpubChapter> _chapters = [];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            TextButton(
-              onPressed: () async {
-                var bookPath = 'assets/books/alice.epub';
-                var book = await EpubService.openBook(bookPath);
-                var chapters = await EpubService.readChapters(book);
-
-                setState(() {
-                  _chapters = chapters;
-                });
-              },
-              child: Text("Open Book Chapters"),
-            ),
-            Expanded(
-              child: ChapterList(chapters: _chapters),
-            ),
-          ],
-        ),
+void main() => runApp(
+      GetMaterialApp(
+        initialRoute: '/',
+        getPages: [
+          GetPage(
+            name: '/',
+            page: () => HomeScreen(title: 'Epub Reader'),
+          ),
+        ],
       ),
     );
-  }
-}

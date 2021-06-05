@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomePage extends StatelessWidget {
   final String title;
   final BookController _controller = Get.put(BookController());
 
-  HomeScreen({Key key, @required this.title}) : super(key: key);
+  HomePage({Key key, @required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

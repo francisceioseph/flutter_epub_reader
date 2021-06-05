@@ -1,5 +1,6 @@
 import 'package:epub/epub.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 
 class ChapterList extends StatelessWidget {
   final List<EpubChapter> chapters;
@@ -16,6 +17,7 @@ class ChapterList extends StatelessWidget {
         title: Text(
           chapter(index).Title,
         ),
+        onTap: () => Get.toNamed('/chapter/$index'),
       ),
       separatorBuilder: (context, index) => Divider(),
     );

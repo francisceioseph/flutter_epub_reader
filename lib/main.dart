@@ -1,4 +1,5 @@
-import 'package:epub_reader/screens/home.dart';
+import 'package:epub_reader/pages/chapter.dart';
+import 'package:epub_reader/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 
@@ -8,8 +9,12 @@ void main() => runApp(
         getPages: [
           GetPage(
             name: '/',
-            page: () => HomeScreen(title: 'Epub Reader'),
+            page: () => HomePage(title: 'Epub Reader'),
           ),
+          GetPage(
+            name: '/chapter/:index',
+            page: () => ChapterPage(),
+          )
         ],
       ),
     );

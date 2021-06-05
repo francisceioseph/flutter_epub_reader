@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class ChapterPage extends StatelessWidget {
   final BookController _controller = Get.find();
-  final int chapterIndex = int.parse(Get.parameters["index"]);
+  final int index = int.parse(Get.parameters["index"]);
 
   ChapterPage({Key key}) : super(key: key);
 
@@ -13,11 +13,11 @@ class ChapterPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Obx(
-          () => Text("${_controller.book.Title}"),
+          () => Text("${_controller.chapter(index).Title}"),
         ),
       ),
       body: Center(
-        child: Text("Hello"),
+        child: Container(),
       ),
     );
   }

@@ -16,6 +16,8 @@ class BookController extends GetxController {
     readBook('assets/books/alice.epub');
   }
 
+  EpubChapter chapter(int index) => chapters[index];
+
   readBook(String path) async {
     EpubBook book = await EpubService.readBook(path);
 

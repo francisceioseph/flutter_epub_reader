@@ -4,15 +4,23 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/state_manager.dart';
 
 class BookController extends GetxController {
-  Rx<EpubBook> book;
-  RxList<EpubChapter> chapters = List<EpubChapter>.empty().obs;
+  Rx<EpubBook> _book;
+  RxList<EpubChapter> _chapters = List<EpubChapter>.empty().obs;
+
+  EpubBook get book => _book.value;
+  List<EpubChapter> get chapters => _chapters.toList();
+
+  @override
+  void onInit() async {
+    super.onInit();
+    readBook('assets/books/alice.epub');
+  }
 
   readBook(String path) async {
-    EpubBook epubBook = await EpubService.readBook(path);
+    EpubBook book = await EpubService.readBook(path);
 
-    this.book = epubBook.obs;
-
-    this.chapters.clear();
-    this.chapters.addAll(EpubService.readChapters(epubBook));
+    _book = book.obs;
+    _chapters.clear();
+    _chapters.addAll(EpubService.readChapters(book));
   }
 }

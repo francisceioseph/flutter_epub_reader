@@ -13,7 +13,7 @@ class ChapterPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Obx(
-          () => Text("${_controller.book.value.Title}"),
+          () => Text("${_controller.book.Title}"),
         ),
       ),
       body: Center(

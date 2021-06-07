@@ -1,10 +1,12 @@
 class StyleService {
   static createStyle() => """
       body {
-        background-color: linen;
+        background-color: white;
       }
       p {
-        font-size: 20px;
+        font-size: 16px;
+        text-indent: 20px;
+        text-align: justify;
         color: #282828;
       }
     """;

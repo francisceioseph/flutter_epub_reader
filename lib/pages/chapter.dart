@@ -1,6 +1,7 @@
 import 'package:epub_reader/controllers/book_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:webview_flutter_plus/webview_flutter_plus.dart';
 
 class ChapterPage extends StatelessWidget {
   final BookController _controller = Get.find();
@@ -17,7 +18,14 @@ class ChapterPage extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Container(),
+        child: Container(
+          child: WebViewPlus(
+            javascriptMode: JavascriptMode.unrestricted,
+            onWebViewCreated: (controller) => controller.loadString(
+              _controller.chapter(index).HtmlContent,
+            ),
+          ),
+        ),
       ),
     );
   }

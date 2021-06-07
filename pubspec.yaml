@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   epub: ^2.1.0
   get: ^4.1.4
+  webview_flutter_plus: ^0.2.2
 
 dev_dependencies:
   flutter_test:

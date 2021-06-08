@@ -13,6 +13,8 @@ class ChapterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Obx(
@@ -24,12 +26,13 @@ class ChapterPage extends StatelessWidget {
           child: WebViewPlus(
             javascriptMode: JavascriptMode.unrestricted,
             onWebViewCreated: (controller) {
-              final style = StyleService.createStyle();
+              final style = StyleService.createStyle(theme);
               final html = XmlService.buildHtmlWithStyle(
                 _controller.chapter(index).HtmlContent,
                 style,
               );
 
+              print(style);
               controller.loadString(
                 html.toXmlString(),
               );
